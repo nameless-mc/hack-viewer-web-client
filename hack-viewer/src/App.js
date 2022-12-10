@@ -1,15 +1,11 @@
 import { CssBaseline } from "@mui/material";
-import EventPage from "./components/pages/EventPage";
-import HomePage from "./components/pages/HomePage";
-import TeamSettingPage from "./components/pages/TeamSetting";
+import MainRouter from "./components/router/MainRouter"
 
 function App() {
   return (
     <>
       <CssBaseline></CssBaseline>
-      <HomePage/>
-      <EventPage/>
-      <TeamSettingPage/>
+      <MainRouter></MainRouter>
     </>
   );
 }
