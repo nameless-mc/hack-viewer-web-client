@@ -14,15 +14,15 @@ const AboutPage=()=> {
                 <listItem>
                     <listItemtText>
                         <Typography  style={{ color: 'orange' }}>
-                            <Box sx={{ fontSize: 30, mt: 7,mb:2}}>
+                            <Box sx={{ fontWeight:'bold',fontSize: 30, mt: 7,mb:2}}>
                                 1.目的
                             </Box>
                         </Typography>
                     </listItemtText>
                     <listItemtText>
-                        <Typography>
+                        <Typography Box sx={{fontWeight:'bold',ml:4}}>
                             このサービスはハッカソン初心者が参加した際に感じるであろう
-                            <Typography style={{ color: 'red' }}Box sx={{ fontSize: 20, my: 2}}>
+                            <Typography style={{ color: 'red' }}Box sx={{ fontWeight:'bold',fontSize: 20, my: 2}}>
                                 「他のチームはどのくらい進んでいるのか」
                             </Typography>
                             という不安を解消することを目的としたサービスです。<br/><br/>
@@ -34,14 +34,14 @@ const AboutPage=()=> {
 
                 <listItemt>
                     <ListItemText >
-                        <Typography style={{ color: 'orange' }} Box sx={{fontSize:30,mt:7,mb:2}}>
+                        <Typography style={{ color: 'orange' }} Box sx={{fontWeight:'bold',fontSize:30,mt:7,mb:2}}>
                             2.できること
                         </Typography>
-                        <list>
+                        <Typography Box sx={{fontWeight:'bold',ml:4}}>
                             ・自チームの進捗確認<br/>
                             ・他チームの進捗確認<br/>
                             ・チーム名変更<br/>
-                        </list>
+                        </Typography>
                     </ListItemText>
                 </listItemt>
 
@@ -50,7 +50,7 @@ const AboutPage=()=> {
                         <Typography style={{ color: 'orange' }} Box sx={{fontSize:30,mt:7}}>
                             3.開発チーム
                         </Typography>
-                        <Typography style={{ color: 'black' }} Box sx={{fontSize:20,mt:1}}>
+                        <Typography Box sx={{fontWeight:'bold',fontSize:20,ml:4}}>
                             チーム名:28時間マラソン（446）
                         </Typography>
                     </listItemText>
