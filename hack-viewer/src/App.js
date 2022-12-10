@@ -1,7 +1,7 @@
 import { CssBaseline } from "@mui/material";
 import EventPage from "./components/pages/EventPage";
 import HomePage from "./components/pages/HomePage";
-import TeamSettingPage from "./components/pages/TeamSetting";
+import SettingPage from "./components/pages/TeamSetting";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <CssBaseline></CssBaseline>
       <HomePage/>
       <EventPage/>
-      <TeamSettingPage/>
+      <SettingPage/>
     </>
   );
 }
