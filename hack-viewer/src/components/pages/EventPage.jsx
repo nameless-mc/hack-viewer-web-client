@@ -4,13 +4,18 @@ import EventTitle from "../organisms/event/EventTitle";
 import MainTitle from "../organisms/MainTitle";
 import MainLayout from "../templates/MainLayout";
 
+import { useLocation } from "react-router-dom";
+
 const EventPage = () => {
+    const {search} = useLocation();
+    const query = new URLSearchParams(search);
+    
     return(
         <MainLayout>
             <MainTitle>イベントページ</MainTitle>
-            <EventTitle/>
+            <EventTitle>{query.get("eventId")}</EventTitle>
             <Box sx={{mt:5}}>
-                <EventCard/>
+                <EventCard>{query.get("eventId")}</EventCard>
             </Box>
         </MainLayout>
     )

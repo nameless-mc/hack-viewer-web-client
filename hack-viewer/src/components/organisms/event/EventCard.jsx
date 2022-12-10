@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions, Step, StepLabel, Stepper } from '@mui/material';
 
-import teamData from "./teamData.json";
+import axios from "../../../utils/http_client";
+import { Navigation } from '@mui/icons-material';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const steps = [
     "アイデア出し",
@@ -15,10 +18,23 @@ const steps = [
     "プレゼン作成"
 ];
 
-function EventCard() {
-  return (
+const EventCard = (props) => {
+    // イベントIDがプロップスとして渡ってくる
+    const {children} = props;
+    const [teams,setTeams] = useState([]);
+
+    useEffect(() => {
+        axios.get(`/api/events/${children}/teams`).then(req => {
+            setTeams(JSON.parse(req.data))
+        }).catch(res => {
+            console.log(res);
+        })
+    }, [])
+
+    return (
     <Box>
-        {teamData.map(({teamname,progres}) => (
+        {teams.map(team => {
+            return (
             <Card
                 sx={{
                     minWidth: 275,
@@ -35,7 +51,7 @@ function EventCard() {
                         チーム名
                     </Typography>
                     <Typography variant="h5" component="div">
-                        {teamname}
+                        {team.name}
                     </Typography>
                 </CardContent>
                 <Box
@@ -45,7 +61,7 @@ function EventCard() {
                         px:2
                     }}
                 >
-                    <Stepper activeStep={progres} alternativeLabel>
+                    <Stepper activeStep={team.progress} alternativeLabel>
                         {steps.map((label) => (
                             <Step key={label}>
                                 <StepLabel>{label}</StepLabel>
@@ -59,7 +75,8 @@ function EventCard() {
                     </Button>
                 </CardActions>
             </Card>
-        ))}
+            )
+        })}
     </Box>
   );
 }
