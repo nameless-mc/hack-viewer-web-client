@@ -55,7 +55,7 @@ function EventCard() {
                 </Box>
                 <CardActions>
                     <Button sx={{mx:'auto',mb:1}} variant='contained'>
-                        進捗を進める
+                        進捗をPUSHする
                     </Button>
                 </CardActions>
             </Card>

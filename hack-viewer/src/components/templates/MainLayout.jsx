@@ -6,7 +6,7 @@ const MainLayout = (props) => {
     return(
         <>
             <MainAppBar/>
-            <Box sx={{m:5}}>
+            <Box sx={{m:6}}>
                 {children}
             </Box>
         </>

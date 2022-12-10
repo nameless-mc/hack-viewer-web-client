@@ -1,14 +1,15 @@
 import {  Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-const TeamSettingTitle = () => {
+const MainTitle = (props) => {
+    const { children } = props;
     return(
         <Box>
             <Typography variant="h5">
-                チームの設定
+                {children}
             </Typography>
         </Box>
     )
 }
 
-export default TeamSettingTitle;
+export default MainTitle;

@@ -6,7 +6,7 @@ import MainLayout from "../templates/MainLayout";
 const HomePage = () => {
     return(
         <MainLayout>
-            <Box sx={{mx:5, mt:8}}>
+            <Box sx={{mx:5, mt:7}}>
                 <HomeTitle/>
                 <Box sx={{mt:5}}>
                     <HomeTextField/>
