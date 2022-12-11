@@ -8,8 +8,8 @@ const EventTitle = (props) => {
     const [eventData, setEventData] = useState([])
 
     useEffect(() => {
-        axios.get(`/api/events/${eventId}`).then(req =>{
-            setEventData(JSON.parse(req.data))
+        axios.get(`/api/events/${eventId}`).then(res =>{
+            setEventData(res.data)
         }).catch(res => {
             console.log(res);
         })
