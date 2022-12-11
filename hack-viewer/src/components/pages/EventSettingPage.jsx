@@ -1,19 +1,19 @@
 import { Box } from "@mui/material";
+import EventSettingBody from "../organisms/eventsetting/EventSettingBody";
 import MainTitle from "../organisms/MainTitle";
-import TeamSettingBody from "../organisms/teamsetting/TeamSettingBody";
 import MainLayout from "../templates/MainLayout";
 
-const TeamSettingPage = () => {
+const EventSettingPage = () => {
     return(
         <MainLayout>
             <Box>
                 <MainTitle>
-                    チームの設定
+                    イベント管理
                 </MainTitle>
-                <TeamSettingBody/>
+                <EventSettingBody></EventSettingBody>
             </Box>
         </MainLayout>
     )
 }
 
-export default TeamSettingPage;
+export default EventSettingPage;
