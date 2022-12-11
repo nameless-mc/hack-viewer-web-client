@@ -16,7 +16,7 @@ import teamData from "./teamData.json";
 import { Stack } from "@mui/system";
 
 const EventMakeCard = (props) => {
-  const {name, setName, deleteTeam} = props
+  const { name, setName, deleteTeam } = props;
   return (
     <Card sx={{ width: 340, m: 3 }}>
       <CardContent>
@@ -31,9 +31,13 @@ const EventMakeCard = (props) => {
             label="チーム名"
             variant="outlined"
             sx={{ width: 300 }}
+            value={name}
+            onChange={setName}
           ></TextField>
           <Box>
-            <Button variant="contained" onClick={deleteTeam}>削除</Button>
+            <Button variant="contained" onClick={deleteTeam}>
+              削除
+            </Button>
           </Box>
         </Stack>
       </CardContent>
