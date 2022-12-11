@@ -14,6 +14,8 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../../../utils/http_client";
 import EventMakeCard from "./EventMakeCard";
 
 const Content = (props) => {
@@ -24,6 +26,10 @@ const Content = (props) => {
 const EventMakeBody = () => {
   const [teams, setTeams] = useState([{ id: 0, name: "" }]);
   const [currentId, setCurrentId] = useState(0);
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [pw, setPw] = useState("");
+  const navigation = useNavigate();
 
   const getNextId = () => {
     const next = currentId + 1;
@@ -40,6 +46,23 @@ const EventMakeBody = () => {
     setTeams(newTeams);
   };
 
+  const setTeamName = (id, newName) => {
+    setTeams(teams.map((t) => (t.id === id ? { id: t.id, name: newName } : t)));
+  };
+
+  const postCreateEvent = () => {
+    console.log(teams);
+    const data = {
+      name: name,
+      description: desc,
+      password: pw,
+      teams: teams.map((t) => ({ name: t.name })),
+    };
+    axios.post("/api/managements/events", data).then((res) => {
+      navigation(`/Event?eventId=${res.data.event_id}`);
+    });
+  };
+
   return (
     <Stack spacing={2}>
       <Content>
@@ -50,6 +73,8 @@ const EventMakeBody = () => {
           label="イベント名"
           variant="outlined"
           sx={{ width: 300 }}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         ></TextField>
       </Content>
       <Content>
@@ -64,6 +89,8 @@ const EventMakeBody = () => {
           multiline
           rows={4}
           sx={{ width: 300 }}
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
         ></TextField>
       </Content>
       <Content>
@@ -74,6 +101,8 @@ const EventMakeBody = () => {
           label="管理者パスワード"
           variant="outlined"
           sx={{ width: 300 }}
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
         ></TextField>
       </Content>
       <Content>
@@ -83,7 +112,7 @@ const EventMakeBody = () => {
         {teams.map((team) => (
           <EventMakeCard
             name={team.name}
-            setName={(name) => setTeams({ ...team, name: name })}
+            setName={(e) => setTeamName(team.id, e.target.value)}
             deleteTeam={() => deleteTeam(team)}
             key={team.id}
           />
@@ -94,7 +123,7 @@ const EventMakeBody = () => {
       </Content>
       <Content>
         <Box display={"flex"} justifyContent={"flex-end"}>
-          <Button sx={{ mx: 3 }} variant="contained">
+          <Button sx={{ mx: 3 }} variant="contained" onClick={postCreateEvent}>
             作成
           </Button>
         </Box>
