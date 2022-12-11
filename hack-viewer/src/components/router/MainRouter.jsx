@@ -3,7 +3,6 @@ import Errorpage from "../pages/ErrorPage";
 import EventPage from "../pages/EventPage";
 import EventSettingPage from "../pages/EventSettingPage";
 import HomePage from "../pages/HomePage";
-import TeamSettingPage from "../pages/TeamSetting";
 import AboutPage from "../pages/AboutPage";
 import HowtoPage from "../pages/HowtoPage";
 import TeamSettingPage from "../pages/TeamSettingPage";
