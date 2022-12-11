@@ -1,19 +1,15 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Button, CardActions, Step, StepLabel, Stepper } from "@mui/material";
-import axios from "../../../utils/http_client";
-import { Navigation } from "@mui/icons-material";
-import { useNavigate, useLocation } from "react-router-dom";
+import { CardActions, Step, StepLabel, Stepper } from "@mui/material";
+import { MoveTeamSettingButton } from "./MoveTeamSettingButton";
 
 const steps = ["アイデア出し", "仕様検討", "機能開発", "統合", "プレゼン作成"];
 
 const TeamCard = (props) => {
-  const { team } = props;
-
+  const { team, eventId } = props;
   return (
     <Card
       sx={{
@@ -46,9 +42,7 @@ const TeamCard = (props) => {
         </Stepper>
       </Box>
       <CardActions>
-        <Button sx={{ mx: "auto", mb: 1 }} variant="contained">
-          進捗をPUSHする
-        </Button>
+        <MoveTeamSettingButton eventId={eventId} team={team} />
       </CardActions>
     </Card>
   );

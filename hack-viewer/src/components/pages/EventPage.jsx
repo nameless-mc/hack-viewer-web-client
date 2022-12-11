@@ -30,7 +30,7 @@ const EventPage = () => {
       <EventTitle eventId={eventId} />
       <Box sx={{ mt: 5 }}>
         {teams.map((team) => (
-          <TeamCard team={team} key={team.name} />
+          <TeamCard team={team} eventId={eventId} key={team.name} />
         ))}
       </Box>
     </MainLayout>
