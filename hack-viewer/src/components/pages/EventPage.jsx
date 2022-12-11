@@ -13,9 +13,9 @@ const EventPage = () => {
     return(
         <MainLayout>
             <MainTitle>イベントページ</MainTitle>
-            <EventTitle>{query.get("eventId")}</EventTitle>
+            <EventTitle eventId={query.get("eventId")}/>
             <Box sx={{mt:5}}>
-                <EventCard>{query.get("eventId")}</EventCard>
+                <EventCard eventId={query.get("eventId")}/>
             </Box>
         </MainLayout>
     )

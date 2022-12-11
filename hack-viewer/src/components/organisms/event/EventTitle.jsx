@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import axios from "../../../utils/http_client";
 
 const EventTitle = (props) => {
-    const {children} = props;
+    const {eventId} = props;
     const [eventData, setEventData] = useState([])
 
     useEffect(() => {
-        axios.get(`/api/events/${children}`).then(req =>{
+        axios.get(`/api/events/${eventId}`).then(req =>{
             setEventData(JSON.parse(req.data))
         }).catch(res => {
             console.log(res);

@@ -5,7 +5,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions, Step, StepLabel, Stepper } from '@mui/material';
-
 import axios from "../../../utils/http_client";
 import { Navigation } from '@mui/icons-material';
 import { useNavigate, useLocation } from "react-router-dom";
@@ -18,14 +17,18 @@ const steps = [
     "プレゼン作成"
 ];
 
+////////////////////
+// 動かないので 39-82行のところをコメントアウトしてあります。
+// 31行目時点でteamDataの中身を見ると初期値が入っているので、おそらく31行目のstateの更新ができていない
+/////////////////////
+
 const EventCard = (props) => {
-    // イベントIDがプロップスとして渡ってくる
-    const {children} = props;
-    const [teams,setTeams] = useState([]);
+    const {eventId} = props;
+    const [teamData,setTeamData] = useState([]);
 
     useEffect(() => {
-        axios.get(`/api/events/${children}/teams`).then(req => {
-            setTeams(JSON.parse(req.data))
+        axios.get(`/api/events/${eventId}/teams`).then(req => {
+            setTeamData(JSON.parse(req.data))
         }).catch(res => {
             console.log(res);
         })
@@ -33,7 +36,7 @@ const EventCard = (props) => {
 
     return (
     <Box>
-        {teams.map(team => {
+        {/* {teams.map(team => {
             return (
             <Card
                 sx={{
@@ -76,7 +79,7 @@ const EventCard = (props) => {
                 </CardActions>
             </Card>
             )
-        })}
+        })} */}
     </Box>
   );
 }
